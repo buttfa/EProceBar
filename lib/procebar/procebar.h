@@ -17,6 +17,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <termios.h>
+#include <unistd.h>
 
 
 /**

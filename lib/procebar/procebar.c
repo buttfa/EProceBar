@@ -14,7 +14,7 @@
  * @brief 最大可能的 ESC 序列长度
  * 
  */
-#define ESC_SEQ_LEN 10 // 
+#define ESC_SEQ_LEN 10
 
 /**
  * @brief 发送 ESC 序列来获取光标位置
@@ -152,16 +152,16 @@ static void handle_procebar(procebar* pb) {
 
     char procebar_str[1024] = "";
     // 输出前缀
-    strcat(procebar_str, pb->style.get_prefix(pb));
+    strcat(procebar_str, pb->style.get_prefix(pb->arg));
     // 输出进度条
     for (int i = 0; i < pb->style.length; i++) {
         if (i < percent) 
-            strcat(procebar_str, pb->style.get_full_char(i, pb));
+            strcat(procebar_str, pb->style.get_full_char(i, pb->arg));
         else
-            strcat(procebar_str, pb->style.get_empty_char(i, pb));
+            strcat(procebar_str, pb->style.get_empty_char(i, pb->arg));
     }
     // 输出后缀
-    strcat(procebar_str, pb->style.get_suffix(pb));
+    strcat(procebar_str, pb->style.get_suffix(pb->arg));
 
     // 输出进度条
     pb->style.print(procebar_str, pb->arg);
@@ -196,6 +196,7 @@ int update_procebar(procebar* pb) {
         // 将光标移动到进度条坐标，清除掉当前行，并隐藏光标
         //      移动        清除   隐藏
         printf("\033[%d;%dH\033[K\x1B[?25l", pb->y, pb->x);
+        fflush(stdout);
     }
 
     // 处理并进度条
@@ -206,6 +207,7 @@ int update_procebar(procebar* pb) {
     if (pb->is_terminal) {
         //      移动        显示
         printf("\033[%d;%dH\033[?25h", row, col);
+        fflush(stdout);
     }
 
 
