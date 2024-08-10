@@ -17,7 +17,7 @@
  * @brief 通用进度条参数结构体
  * 
  */
-typedef struct COMMON_PROCEBAR_ARG {
+typedef struct {
     char* prefix;
     char* suffix;
     char* full_char;

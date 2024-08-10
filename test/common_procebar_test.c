@@ -5,6 +5,13 @@ int main() {
     int current_num = 0;
     int target_num = 100;
     procebar* pb = create_procebar(COMMON_PROCEBAR, &current_num, &target_num, true);
+    common_procebar_arg arg = {
+        .prefix = "|",
+        .suffix = "|",
+        .full_char = "█",
+        .empty_char = "-"
+    };
+    pb->arg = (void*)&arg;
 
     // 更新进度条
     for (int i = 0; i < target_num; i++) {
