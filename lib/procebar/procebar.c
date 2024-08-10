@@ -14,49 +14,7 @@
  * @brief 最大可能的 ESC 序列长度
  * 
  */
-#define ESC_SEQ_LEN 10
-
-/**
- * @brief 发送 ESC 序列来获取光标位置
- * 
- * @param fd 文件描述符
- */
-static void send_cursor_position_request(int fd) {
-    write(fd, "\033[6n", 4); // 发送 ESC 序列
-}
-
-/**
- * @brief 解析 ESC 序列以获取光标位置
- * 
- * @param buf 需要解析的 ESC 序列
- * @param row 获取的行号存放的指针
- * @param col 获取的列号存放的指针
- * @return int 返回1表示解析成功，0表示解析失败
- */
-static int parse_cursor_position(const char *buf, int *row, int *col) {
-    const char *p = buf;
-    if (strncmp(p, "\033[", 2) != 0) return 0; // 不是以 ESC 序列开始
-    p += 2;
-
-    int num = 0;
-    while (*p && *p >= '0' && *p <= '9') {
-        num = num * 10 + (*p - '0');
-        p++;
-    }
-
-    *row = num;
-    if (*p != ';') return 0; // 没有分号分隔
-    p++;
-
-    num = 0;
-    while (*p && *p >= '0' && *p <= '9') {
-        num = num * 10 + (*p - '0');
-        p++;
-    }
-
-    *col = num;
-    return 1;
-}
+#define ESC_SEQ_LEN 20
 
 /**
  * @brief 获取当前光标位置
@@ -79,14 +37,14 @@ static bool get_cursor_position(int *row, int *col) {
     tcsetattr(fd, TCSANOW, &newt);
 
     // 发送 ESC 序列以获取光标位置
-    send_cursor_position_request(fd);
+    write(fd, "\033[6n", 4);
 
     // 读取响应
     char buf[ESC_SEQ_LEN];
     read(fd, buf, ESC_SEQ_LEN);
 
-    if (!parse_cursor_position(buf, row, col))
-        return false;
+    // 解析响应
+    sscanf(buf, "\033[%d;%dR", row, col);
 
     // 恢复终端设置
     tcsetattr(fd, TCSANOW, &oldt);
@@ -205,8 +163,8 @@ int update_procebar(procebar* pb) {
     // 如果是终端模式，则将光标移动回保存的位置
     // 并显示光标
     if (pb->is_terminal) {
-        //      移动        显示
-        printf("\033[%d;%dH\033[?25h", row, col);
+        //      移动        显示     重置文本样式
+        printf("\033[%d;%dH\033[?25h\x1b[0m", row, col);
         fflush(stdout);
     }
 
