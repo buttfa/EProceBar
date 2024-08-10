@@ -11,8 +11,12 @@
  * 
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <termios.h>
 
 
 /**
@@ -39,7 +43,7 @@ typedef struct PROCEBAR_STYLE {
  */
 typedef struct PROCEBAR {
     bool is_terminal;
-    bool is_save;
+    // bool is_save;
 
     procebar_style style;  // 进度条样式
     
