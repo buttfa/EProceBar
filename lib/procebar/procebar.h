@@ -66,6 +66,14 @@ typedef struct PROCEBAR {
 procebar* create_procebar(procebar_style style, int* current_num, int* target_num, bool is_terminal);
 
 /**
+ * @brief 更新进度条显示
+ * 
+ * @param pb 所需操作的进度条指针
+ * @return int 指示进度条是否更新成功
+ */
+int update_procebar(procebar* pb);
+
+/**
  * @brief 释放进度条内存，并将pb指针置为NULL
  * 
  * @param pb 所需操作的进度条指针
@@ -73,22 +81,8 @@ procebar* create_procebar(procebar_style style, int* current_num, int* target_nu
  */
 int free_procebar(procebar** pb);
 
-#endif
-
-#ifndef __PROCEBAR_T_ADV__
 /**
- * @brief 更新进度条显示
- * 
- * @param pb 所需操作的进度条指针
- * @return int 指示进度条是否更新成功
- */
-int update_procebar(procebar* pb);
-#endif
-
-
-#ifdef __PROCEBAR_T_ADV__
-/**
- * @brief 清除进度条显示，并将进度条后每行的字符各自移动到前一行。
+ * @brief 清除进度条显示
  * 
  * @param pb 所需操作的进度条指针
  * @return int 指示进度条是否清除成功

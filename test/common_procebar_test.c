@@ -5,6 +5,7 @@ int main() {
     int current_num = 0;
     int target_num = 100;
     procebar* pb = create_procebar(COMMON_PROCEBAR, &current_num, &target_num, true);
+    procebar* pb_c = create_procebar(COMMON_PROCEBAR, &current_num, &target_num, true);
     common_procebar_arg arg = {
         .prefix = "|",
         .suffix = "|",
@@ -17,7 +18,13 @@ int main() {
     for (int i = 0; i < target_num; i++) {
         current_num++;
         update_procebar(pb);
+        update_procebar(pb_c);
         if (current_num % 10 == 0)
             printf("current_num: %d\n", current_num);
     }
+
+    clear_procebar(pb);
+    free_procebar((procebar**)&pb);
+    free_procebar((procebar**)&pb_c);
+
 }

@@ -171,3 +171,29 @@ int update_procebar(procebar* pb) {
 
     return 1;
 }
+
+/**
+ * @brief 清除进度条显示
+ * 
+ * @param pb 所需操作的进度条指针
+ * @return int 指示进度条是否清除成功
+ */
+int clear_procebar(procebar* pb) {
+    // 判断进度条指针是否为空且是否为终端模式
+    if (pb == NULL || !pb->is_terminal)
+        return 0;
+
+    // 保存当前光标位置
+    int row = 0, col = 0;
+    get_cursor_position(&row, &col);
+
+    // 将光标移动到进度条坐标，清除掉当前行，并隐藏光标
+    //      移动        清除   隐藏
+    printf("\033[%d;%dH\033[K\x1B[?25l", pb->y, pb->x);
+    fflush(stdout);
+
+    // 将光标移动回保存的位置
+    //      移动        显示     重置文本样式
+    printf("\033[%d;%dH\033[?25h\x1b[0m", row, col);
+    fflush(stdout);
+}
