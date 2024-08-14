@@ -35,7 +35,7 @@ void color_procebar_end(void* arg) {
 char* color_procebar_prefix(void* arg) {
     static char prefix[128];
     strcpy(prefix, ANSI_COLOR[(time(NULL)+0)%7]);
-    strcat(prefix, "[");
+    strcat(prefix, (char*)"[");
     return prefix;
 }
 
@@ -48,7 +48,7 @@ char* color_procebar_prefix(void* arg) {
 char* color_procebar_suffix(void* arg) {
     static char suffix[28];
     strcpy(suffix, ANSI_COLOR[(time(NULL)+0)%7]);
-    strcat(suffix, "]");
+    strcat(suffix, (char*)"]");
     return suffix;
 }
 
@@ -60,7 +60,7 @@ char* color_procebar_suffix(void* arg) {
  * @return char* 返回空位字符
  */
 char* color_procebar_empty_char(int index, void* arg) {
-    return " ";
+    return (char*)" ";
 }
 
 /**
@@ -76,14 +76,14 @@ char* color_procebar_full_char(int index, void* arg) {
     strcpy(full, ANSI_COLOR[(time(NULL)+index)%7]);
 
     // 判断是否是进度的最后一个字符
-    static char* symbols[] = {"\\", "|", "/", "~" };
+    static char* symbols[] = {(char*)"\\", (char*)"|", (char*)"/", (char*)"~" };
     static int times = 0;
     if (index == *((color_procebar_arg*)arg)->current_num * ((color_procebar_arg*)arg)->length / *((color_procebar_arg*)arg)->target_num - 1) 
         // 如果是进度最后一个字符，则返回依据时间依次返回symbols中的符号
         strcat(full ,symbols[(time(NULL)+(times = times < 4 ? times+1 : 0)*3) % 4]);
     else 
         // 否则返回"-"
-        strcat(full, "-");
+        strcat(full, (char*)"-");
 
     return full;
 }

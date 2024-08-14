@@ -6,8 +6,8 @@ int main() {
     int target_num = 100;
     color_procebar_arg arg = {
         .current_num = &current_num,
-        .length = COLOR_PROCEBAR_LENGTH,
         .target_num = &target_num,
+        .length = COLOR_PROCEBAR_LENGTH,
     };
     procebar* pb = create_procebar(COLOR_PROCEBAR, &current_num, &target_num, (void*)&arg);
     pb->arg = &arg;

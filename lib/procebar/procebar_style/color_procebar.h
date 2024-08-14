@@ -29,14 +29,14 @@ typedef struct {
  * @brief ANSI颜色定义
  * 
  */
-#define ANSI_COLOR_RED     "\x1b[31m"
-#define ANSI_COLOR_ORANGE  "\x1b[38;5;208m"  // 256色橙色
-#define ANSI_COLOR_YELLOW  "\x1b[33m"
-#define ANSI_COLOR_GREEN   "\x1b[32m"
-#define ANSI_COLOR_CYAN    "\x1b[36m"
-#define ANSI_COLOR_BLUE    "\x1b[34m"
-#define ANSI_COLOR_PURPLE  "\x1b[35m"
-#define ANSI_COLOR_RESET   "\x1b[0m"
+#define ANSI_COLOR_RED     (char*)"\x1b[31m"
+#define ANSI_COLOR_ORANGE  (char*)"\x1b[38;5;208m"  // 256色橙色
+#define ANSI_COLOR_YELLOW  (char*)"\x1b[33m"
+#define ANSI_COLOR_GREEN   (char*)"\x1b[32m"
+#define ANSI_COLOR_CYAN    (char*)"\x1b[36m"
+#define ANSI_COLOR_BLUE    (char*)"\x1b[34m"
+#define ANSI_COLOR_PURPLE  (char*)"\x1b[35m"
+#define ANSI_COLOR_RESET   (char*)"\x1b[0m"
 static char* ANSI_COLOR[] = {
     ANSI_COLOR_RED,
     ANSI_COLOR_ORANGE,
