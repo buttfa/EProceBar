@@ -36,13 +36,13 @@ typedef struct {
  */
 #define COMMON_PROCEBAR (procebar_style){\
     .length = COMMON_PROCEBAR_LENGTH, \
+    .print = common_procebar_print, \
     .start = common_procebar_start, \
     .end = common_procebar_end, \
     .get_prefix = common_procebar_prefix, \
     .get_suffix = common_procebar_suffix, \
-    .get_empty_char = common_procebar_empty_char, \
     .get_full_char = common_procebar_full_char, \
-    .print = common_procebar_print, \
+    .get_empty_char = common_procebar_empty_char, \
 }
 
 /**
@@ -50,10 +50,10 @@ typedef struct {
  * 
  */
 #define COMMON_PROCEBAR_ARG (common_procebar_arg){\
-    .prefix = "[", \
-    .suffix = "]", \
-    .full_char = "=", \
-    .empty_char = " ", \
+    .prefix = (char*)"[", \
+    .suffix = (char*)"]", \
+    .full_char = (char*)"=", \
+    .empty_char = (char*)" ", \
 }
 
 /**

@@ -7,10 +7,10 @@ int main() {
     procebar* pb = create_procebar(COMMON_PROCEBAR, &current_num, &target_num, true);
     procebar* pb_c = create_procebar(COMMON_PROCEBAR, &current_num, &target_num, true);
     common_procebar_arg arg = {
-        .prefix = "|",
-        .suffix = "|",
-        .full_char = "█",
-        .empty_char = "-"
+        .prefix = (char*)"|",
+        .suffix = (char*)"|",
+        .full_char = (char*)"█",
+        .empty_char = (char*)"-"
     };
     pb->arg = (void*)&arg;
 
@@ -26,5 +26,6 @@ int main() {
     clear_procebar(pb);
     free_procebar((procebar**)&pb);
     free_procebar((procebar**)&pb_c);
-
+    printf("Common Procebar Test Passed!\n");
+    return 0;
 }

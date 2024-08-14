@@ -25,15 +25,16 @@
  * 
  */
 typedef struct PROCEBAR_STYLE {
+    int length;
+
+    void (*print)(char* str, void* arg);
+
     void (*start)(void* arg);
     void (*end)(void* arg);
 
     char* (*get_prefix)(void* arg);
     char* (*get_suffix)(void* arg);
     
-    void (*print)(char* str, void* arg);
-
-    int length;
     char* (*get_full_char)(int index, void* arg); // 包含左边界字符
     char* (*get_empty_char)(int index, void* arg); // 包含右边界字符
 } procebar_style;

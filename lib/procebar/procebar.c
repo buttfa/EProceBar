@@ -86,7 +86,7 @@ procebar* create_procebar(procebar_style style, int* current_num, int* target_nu
  */
 int free_procebar(procebar** pb) {
     // 进度条指针为空则返回0
-    if (*pb == NULL) 
+    if (pb == NULL || *pb == NULL) 
         return 0;
 
     free(*pb);
@@ -104,6 +104,9 @@ static void handle_procebar(procebar* pb) {
     // 判断进度条指针是否为空
     if (pb == NULL)
         return;
+
+    // 调用进度条开始函数
+    pb->style.start(pb->arg);
 
     // 计算进度
     int percent = *pb->current_num * pb->style.length / *pb->target_num;
@@ -123,6 +126,9 @@ static void handle_procebar(procebar* pb) {
 
     // 输出进度条
     pb->style.print(procebar_str, pb->arg);
+
+    // 调用进度条结束函数
+    pb->style.end(pb->arg);
 }
 
 /**
@@ -196,4 +202,5 @@ int clear_procebar(procebar* pb) {
     //      移动        显示     重置文本样式
     printf("\033[%d;%dH\033[?25h\x1b[0m", row, col);
     fflush(stdout);
+    return 1;
 }
