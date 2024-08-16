@@ -59,7 +59,7 @@ static bool get_cursor_position(int *row, int *col) {
  * @param target_num 目标进度
  * @return procebar* 返回值为创建的进度条指针
  */
-procebar* create_procebar(procebar_style style, int* current_num, int* target_num, bool is_terminal) {
+procebar* create_procebar(procebar_style style, int* current_num, int* target_num, void* arg, bool is_terminal) {
     // 申请内存
     procebar* pb = (procebar*)malloc(sizeof(procebar));
     memset(pb, 0, sizeof(procebar));
@@ -68,7 +68,7 @@ procebar* create_procebar(procebar_style style, int* current_num, int* target_nu
     pb->is_terminal = is_terminal;
     // pb->is_save = true;
     pb->style = style;
-    pb->arg = NULL;
+    pb->arg = arg;
     pb->current_num = current_num;
     pb->target_num = target_num;
     pb->x = 0;

@@ -9,8 +9,7 @@ int main() {
         .target_num = &target_num,
         .length = COLOR_PROCEBAR_LENGTH,
     };
-    procebar* pb = create_procebar(COLOR_PROCEBAR, &current_num, &target_num, (void*)&arg);
-    pb->arg = &arg;
+    procebar* pb = create_procebar(COLOR_PROCEBAR, &current_num, &target_num, (void*)&arg, true);
 
     // 更新进度条
     while (current_num < target_num) {

@@ -4,15 +4,14 @@ int main() {
     // 创建一个进度条
     int current_num = 0;
     int target_num = 100;
-    procebar* pb = create_procebar(COMMON_PROCEBAR, &current_num, &target_num, true);
-    procebar* pb_c = create_procebar(COMMON_PROCEBAR, &current_num, &target_num, true);
     common_procebar_arg arg = {
         .prefix = (char*)"|",
         .suffix = (char*)"|",
         .full_char = (char*)"█",
         .empty_char = (char*)"-"
     };
-    pb->arg = (void*)&arg;
+    procebar* pb = create_procebar(COMMON_PROCEBAR, &current_num, &target_num, (void*)&arg, true);
+    procebar* pb_c = create_procebar(COMMON_PROCEBAR, &current_num, &target_num, NULL, true);
 
     // 更新进度条
     for (int i = 0; i < target_num; i++) {

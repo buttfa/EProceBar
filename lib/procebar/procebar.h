@@ -64,7 +64,7 @@ typedef struct PROCEBAR {
  * @param target_num 目标进度
  * @return procebar* 返回值为创建的进度条指针
  */
-procebar* create_procebar(procebar_style style, int* current_num, int* target_num, bool is_terminal);
+procebar* create_procebar(procebar_style style, int* current_num, int* target_num, void* arg, bool is_terminal);
 
 /**
  * @brief 更新进度条显示
