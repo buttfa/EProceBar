@@ -14,14 +14,28 @@
 #include "procebar.h"
 
 /**
+ * @brief 处理数据单位和大小的相关宏定义
+ * 
+ */
+#define IS_B(size) (0 <= size && size < 1024 ? true : false)
+#define IS_KB(size) (1024 <= size && size < 1024 * 1024 ? true : false)
+#define IS_MB(size) (1024 * 1024 <= size && size < 1024 * 1024 * 1024 ? true : false)
+#define IS_GB(size) (1024 * 1024 * 1024 <= size ? true : false)
+#define GET_UNIT(size) (IS_B(size) ? "B" : IS_KB(size) ? "KB" : IS_MB(size) ? "MB" : IS_GB(size) ? "GB" : "")
+#define HANDLE_SIZE(size) (IS_B(size) ? (double)size : IS_KB(size) ? (double)size / 1024 : IS_MB(size) ? (double)size / 1024 / 1024 : IS_GB(size) ? (double)size / 1024 / 1024 / 1024 : 0)
+
+/**
  * @brief 传输进度条参数结构体
  * 
  */
 typedef struct {
-    char* prefix;
-    char* suffix;
-    char* full_char;
-    char* empty_char;
+    // char* prefix;
+    // char* suffix;
+    // char* full_char;
+    // char* empty_char;
+    int* current_num;
+    int* target_num;
+    int* speed;
 } transmit_procebar_arg;
 
 /**
