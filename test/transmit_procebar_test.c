@@ -9,9 +9,13 @@ int main() {
     srand(time(NULL));
     // 定义传输进度条样式参数
     transmit_procebar_arg arg = {
-        .current_num = &current_num,
-        .target_num = &target_num,
-        .speed = &speed,
+        .prefix = (char*)"|",         // 非必要
+        .suffix = (char*)"|",         // 非必要
+        .full_char = (char*)"#",      // 非必要
+        .empty_char = (char*)"-",     // 非必要
+        .current_num = &current_num,  // 必要
+        .target_num = &target_num,    // 必要
+        .speed = &speed,              // 必要
     };
     // 创建进度条
     procebar* pb = create_procebar(TRANSMIT_PROCEBAR, &current_num, &target_num, &arg, true);

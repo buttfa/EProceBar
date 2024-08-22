@@ -33,7 +33,10 @@ void transmit_procebar_end(void* arg) {
  * @return char* 返回前缀
  */
 char* transmit_procebar_prefix(void* arg) {
-    return "[";
+    if (arg != NULL && ((transmit_procebar_arg*)arg)->prefix != NULL) 
+        return ((transmit_procebar_arg*)arg)->prefix;
+    else 
+        return TRANSMIT_PROCEBAR_ARG.prefix;
 }
 
 /**
@@ -44,7 +47,15 @@ char* transmit_procebar_prefix(void* arg) {
  */
 char* transmit_procebar_suffix(void* arg) {
     static char suffix[1024];
-    sprintf(suffix, "] %.1f%s/%.1f%s %.1f%s/s", 
+
+    // 获取后缀
+    if (arg != NULL && ((transmit_procebar_arg*)arg)->suffix != NULL) 
+        sprintf(suffix, "%s", ((transmit_procebar_arg*)arg)->suffix);
+    else 
+        sprintf(suffix, "%s", TRANSMIT_PROCEBAR_ARG.suffix);
+
+    // 获取传输相关信息
+    sprintf(suffix+strlen(suffix), " %.1f%s/%.1f%s %.1f%s/s", 
         HANDLE_SIZE(*((transmit_procebar_arg*)arg)->current_num),
         GET_UNIT(*((transmit_procebar_arg*)arg)->current_num),
         HANDLE_SIZE(*((transmit_procebar_arg*)arg)->target_num),
@@ -62,7 +73,10 @@ char* transmit_procebar_suffix(void* arg) {
  * @return char* 返回空位字符
  */
 char* transmit_procebar_empty_char(int index, void* arg) {
-    return " ";
+    if (arg != NULL && ((transmit_procebar_arg*)arg)->empty_char != NULL) 
+        return ((transmit_procebar_arg*)arg)->empty_char;
+    else 
+        return TRANSMIT_PROCEBAR_ARG.empty_char;
 }
 
 /**
@@ -73,7 +87,10 @@ char* transmit_procebar_empty_char(int index, void* arg) {
  * @return char* 返回满位字符
  */
 char* transmit_procebar_full_char(int index, void* arg) {
-    return "=";
+    if (arg != NULL && ((transmit_procebar_arg*)arg)->full_char != NULL) 
+        return ((transmit_procebar_arg*)arg)->full_char;
+    else 
+        return TRANSMIT_PROCEBAR_ARG.full_char;
 }
 
 /**

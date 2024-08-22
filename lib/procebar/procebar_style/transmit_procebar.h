@@ -29,10 +29,10 @@
  * 
  */
 typedef struct {
-    // char* prefix;
-    // char* suffix;
-    // char* full_char;
-    // char* empty_char;
+    char* prefix;
+    char* suffix;
+    char* full_char;
+    char* empty_char;
     int* current_num;
     int* target_num;
     int* speed;
