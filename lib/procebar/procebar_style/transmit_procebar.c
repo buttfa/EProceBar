@@ -44,7 +44,7 @@ char* transmit_procebar_prefix(void* arg) {
  */
 char* transmit_procebar_suffix(void* arg) {
     static char suffix[1024];
-    sprintf(suffix, "] %d%s/%d%s %d%s", 
+    sprintf(suffix, "] %.1f%s/%.1f%s %.1f%s/s", 
         HANDLE_SIZE(*((transmit_procebar_arg*)arg)->current_num),
         GET_UNIT(*((transmit_procebar_arg*)arg)->current_num),
         HANDLE_SIZE(*((transmit_procebar_arg*)arg)->target_num),
