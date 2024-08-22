@@ -28,3 +28,9 @@ transmit_procebar_test:
 	@./transmit_procebar_test
 	@rm -rf transmit_procebar_test
 	@echo "transmit_procebar_test done"
+
+task_procebar_test:
+	@echo "task_procebar_test"
+	@gcc -o task_procebar_test task_procebar_test.c ../lib/procebar/procebar.c ../lib/procebar/procebar_style/task_procebar.c -I ../lib/procebar -I ../lib/procebar/procebar_style
+	@./task_procebar_test
+	@rm -rf task_procebar_test

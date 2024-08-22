@@ -22,6 +22,10 @@ typedef struct {
     char* suffix;
     char* full_char;
     char* empty_char;
+
+    int* current_num;
+    int* target_num;
+    char** tasks_name;
 } task_procebar_arg;
 
 /**
