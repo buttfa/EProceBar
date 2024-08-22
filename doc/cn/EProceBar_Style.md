@@ -9,38 +9,11 @@
 
 ## EProceBar预设样式
 #### 1. 传输进度条
+#### [传输进度条使用示例](../../test/transmit_procebar_test.c)
 #### 2. 任务进度条
 #### 3. 通用进度条
-#### ①通用进度条有着较高的可扩展性，允许在一定程度上自定义样式。可以通过以下方式创建一个通用进度条。
-```c
-#include "common_procebar.h"
-
-int main() {
-    // 定义任务进度参数
-    int current = 0;
-    int target = 100;
-    // 定义通用进度条样式参数
-    common_procebar_arg arg = {
-        .prefix = (char*)"|",
-        .suffix = (char*)"|",
-        .full_char = (char*)"█",
-        .empty_char = (char*)"-"
-    };
-    // 使用COMMON_PROCEBAR样式创建进度条。
-    // 注：如果使用通用进度条的默认样式，则无需传入arg，对应位置传入NULL即可。
-    procebar* pb = create_procebar(COMMON_PROCEBAR, &current, &target, (void*)&arg,true);
-    
-    // 模拟因任务进行造成的进度变化。
-    while (current < target) 
-        update_procebar(pb);
-    
-
-    // 释放进度条资源
-    free_procebar((procebar**)&pb);
-    return 0;
-}
-```
-#### ②通用进度条除了可以通过修改样式参数来修改进度条样式外，还可以通过不断变更前后缀内容来实现修改进度条格式。<br>以下，给出一个例子，为使用通用进度条间接实现传输进度条。
+#### ①通用进度条有着较高的可扩展性，允许在一定程度上自定义样式。此处给出一个[示例](../../test/common_procebar_test.c)。
+#### ②通用进度条除了可以通过修改样式参数来修改进度条样式外，还可以通过不断变更前后缀内容来实现修改进度条格式。<br>以下，给出一个[示例](../../test/common_transmit_test.c)，为使用通用进度条间接实现传输进度条。
 
 
 ## EProceBar自定义样式

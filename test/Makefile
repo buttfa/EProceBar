@@ -14,6 +14,13 @@ color_procebar_test:
 	@rm -rf color_procebar_test
 	@echo "color_procebar_test done"
 
+# 测试common_transmit
+common_transmit_test:
+	@echo "common_transmit_test"
+	@gcc -o common_transmit_test common_transmit_test.c ../lib/procebar/procebar.c ../lib/procebar/procebar_style/common_procebar.c -I ../lib/procebar -I ../lib/procebar/procebar_style
+	@./common_transmit_test
+	@rm -rf common_transmit_test
+
 # 测试transmit_procebar
 transmit_procebar_test:
 	@echo "transmit_procebar_test"
