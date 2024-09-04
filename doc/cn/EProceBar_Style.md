@@ -32,7 +32,7 @@ typedef struct {
 } color_procebar_arg;
 ```
 #### 2. 创建一个进度条样式宏定义。
-#### 此处给出color_procebar样式结构体示例，由于篇幅限制，此处无法给出样式结构体中成员函数的具体实现，详情请参考[color_procebar.c](../../lib/procebar/procebar_style/color_procebar.c)。
+#### 此处给出color_procebar样式结构体示例，由于篇幅限制，此处无法给出样式结构体中成员函数的具体实现，详情请参考[color_procebar.c](../../eprocebar/procebar_style/color_procebar.c)。
 ```c
 /**
  * @brief 彩色进度条默认长度 
@@ -55,4 +55,4 @@ typedef struct {
     .get_empty_char = color_procebar_empty_char, \
 }
 ```
-#### 如果想要自定义进度条样式，推荐参考color_procebar进度条示例(包含[源文件](../../lib/procebar/procebar_style/color_procebar.c)和[头文件](../../lib/procebar/procebar_style/color_procebar.h))，其实现了随时间变化的彩色进度条，对于深入了解如何自定义进度条样式具有很大帮助。
+#### 如果想要自定义进度条样式，推荐参考color_procebar进度条示例(包含[源文件](../../eprocebar/procebar_style/color_procebar.c)和[头文件](../../eprocebar/procebar_style/color_procebar.h))，其实现了随时间变化的彩色进度条，对于深入了解如何自定义进度条样式具有很大帮助。

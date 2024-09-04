@@ -32,7 +32,7 @@ typedef struct {
 } color_procebar_arg;
 ```
 #### 2.  Create a progress bar style macro definition.
-#### Here is an example of the colorsprocebar style structure. Due to space limitations, the specific implementation of member functions in the style structure cannot be provided here. For details, please refer to [color_procebar.c](../../lib/procebar/procebar_style/color_procebar.c).
+#### Here is an example of the colorsprocebar style structure. Due to space limitations, the specific implementation of member functions in the style structure cannot be provided here. For details, please refer to [color_procebar.c](../../eprocebar/procebar_style/color_procebar.c).
 ```c
 /**
 *@ brief Color Progress Bar Default Length
@@ -55,4 +55,4 @@ typedef struct {
     .get_empty_char = color_procebar_empty_char, \
 }
 ```
-#### If you want to customize the style of the progress bar, it is recommended to refer to the colorsprocebar progress bar example (including [source file](../../lib/procebar/procebar_style/color_procebar.c) and [header file](../../lib/procebar/procebar_style/color_procebar.h)), which implements a color progress bar that changes over time and is very helpful for a deeper understanding of how to customize progress bar styles.
+#### If you want to customize the style of the progress bar, it is recommended to refer to the colorsprocebar progress bar example (including [source file](../../eprocebar/procebar_style/color_procebar.c) and [header file](../../eprocebar/procebar_style/color_procebar.h)), which implements a color progress bar that changes over time and is very helpful for a deeper understanding of how to customize progress bar styles.
