@@ -47,6 +47,7 @@ typedef struct {
     .get_suffix = task_procebar_suffix, \
     .get_full_char = task_procebar_full_char, \
     .get_empty_char = task_procebar_empty_char, \
+    .is_terminal = true, \
 }
 
 /**

@@ -59,14 +59,12 @@ static bool get_cursor_position(int *row, int *col) {
  * @param target_num 目标进度
  * @return procebar* 返回值为创建的进度条指针
  */
-procebar* create_procebar(procebar_style style, int* current_num, int* target_num, void* arg, bool is_terminal) {
+procebar* create_procebar(procebar_style style, int* current_num, int* target_num, void* arg) {
     // 申请内存
     procebar* pb = (procebar*)malloc(sizeof(procebar));
     memset(pb, 0, sizeof(procebar));
 
     // 初始化进度条
-    pb->is_terminal = is_terminal;
-    // pb->is_save = true;
     pb->style = style;
     pb->arg = arg;
     pb->current_num = current_num;
@@ -143,7 +141,7 @@ int update_procebar(procebar* pb) {
         return 0;
 
     // 判断是否为终端模式且坐标为(0, 0)
-    if (pb->is_terminal && pb->x == 0 && pb->y == 0) {
+    if (pb->style.is_terminal && pb->x == 0 && pb->y == 0) {
         // 如果是，则获取当前光标坐标为进度条坐标
         get_cursor_position(&pb->y, &pb->x);
         // 输出一个"\n"，使光标向下移动一行，以免其它输出覆盖进度条
@@ -153,7 +151,7 @@ int update_procebar(procebar* pb) {
     // 判断是否为终端模式，如果是，则保存当前光标位置，
     // 并将光标移动到进度条坐标
     int row, col;
-    if (pb->is_terminal) {
+    if (pb->style.is_terminal) {
         // 保存当前光标位置
         get_cursor_position(&row, &col);
 
@@ -168,7 +166,7 @@ int update_procebar(procebar* pb) {
 
     // 如果是终端模式，则将光标移动回保存的位置
     // 并显示光标
-    if (pb->is_terminal) {
+    if (pb->style.is_terminal) {
         //      移动        显示     重置文本样式
         printf("\033[%d;%dH\033[?25h\x1b[0m", row, col);
         fflush(stdout);
@@ -186,7 +184,7 @@ int update_procebar(procebar* pb) {
  */
 int clear_procebar(procebar* pb) {
     // 判断进度条指针是否为空且是否为终端模式
-    if (pb == NULL || !pb->is_terminal)
+    if (pb == NULL || !pb->style.is_terminal)
         return 0;
 
     // 保存当前光标位置

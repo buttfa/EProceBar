@@ -66,6 +66,7 @@ static char* ANSI_COLOR[] = {
     .get_suffix = color_procebar_suffix, \
     .get_full_char = color_procebar_full_char, \
     .get_empty_char = color_procebar_empty_char, \
+    .is_terminal = true, \
 }
 
 /**

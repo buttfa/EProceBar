@@ -43,6 +43,7 @@ typedef struct {
     .get_suffix = common_procebar_suffix, \
     .get_full_char = common_procebar_full_char, \
     .get_empty_char = common_procebar_empty_char, \
+    .is_terminal = true, \
 }
 
 /**

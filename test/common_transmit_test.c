@@ -15,7 +15,7 @@ int main() {
         .empty_char = (char*)"-"
     };
     // 使用COMMON_PROCEBAR样式创建进度条。
-    procebar* pb = create_procebar(COMMON_PROCEBAR, &current, &target, (void*)&arg,true);
+    procebar* pb = create_procebar(COMMON_PROCEBAR, &current, &target, (void*)&arg);
     
     // 模拟因任务进行造成的进度变化。
     while (current < target) {

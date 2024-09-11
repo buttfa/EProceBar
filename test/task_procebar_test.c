@@ -12,7 +12,7 @@ int main() {
         .tasks_name = tasks_name,
     };
     // 创建进度条
-    procebar* pb = create_procebar(TASK_PROCEBAR, &current_num, &target_num, &arg, true);
+    procebar* pb = create_procebar(TASK_PROCEBAR, &current_num, &target_num, &arg);
     // 模拟因任务进行造成的进度变化。
     while (current_num < target_num) {
         current_num++;

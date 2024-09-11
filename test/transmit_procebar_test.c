@@ -18,7 +18,7 @@ int main() {
         .speed = &speed,              // 必要
     };
     // 创建进度条
-    procebar* pb = create_procebar(TRANSMIT_PROCEBAR, &current_num, &target_num, &arg, true);
+    procebar* pb = create_procebar(TRANSMIT_PROCEBAR, &current_num, &target_num, &arg);
 
     // 模拟因任务进行造成的进度变化。
     while (current_num < target_num) {

@@ -37,6 +37,8 @@ typedef struct PROCEBAR_STYLE {
     
     char* (*get_full_char)(int index, void* arg); // 包含左边界字符
     char* (*get_empty_char)(int index, void* arg); // 包含右边界字符
+
+    bool is_terminal;
 } procebar_style;
 
 /**
@@ -44,9 +46,6 @@ typedef struct PROCEBAR_STYLE {
  * 
  */
 typedef struct PROCEBAR {
-    bool is_terminal;
-    // bool is_save;
-
     procebar_style style;  // 进度条样式
     
     void* arg;             // 进度条所需参数
@@ -64,7 +63,7 @@ typedef struct PROCEBAR {
  * @param target_num 目标进度
  * @return procebar* 返回值为创建的进度条指针
  */
-procebar* create_procebar(procebar_style style, int* current_num, int* target_num, void* arg, bool is_terminal);
+procebar* create_procebar(procebar_style style, int* current_num, int* target_num, void* arg);
 
 /**
  * @brief 更新进度条显示

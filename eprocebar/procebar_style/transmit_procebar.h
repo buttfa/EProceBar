@@ -57,6 +57,7 @@ typedef struct {
     .get_suffix = transmit_procebar_suffix, \
     .get_full_char = transmit_procebar_full_char, \
     .get_empty_char = transmit_procebar_empty_char, \
+    .is_terminal = true, \
 }
 
 /**
