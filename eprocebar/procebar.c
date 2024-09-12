@@ -59,38 +59,21 @@ static bool get_cursor_position(int *row, int *col) {
  * @param target_num 目标进度
  * @return procebar* 返回值为创建的进度条指针
  */
-procebar* create_procebar(procebar_style style, int* current_num, int* target_num, void* arg) {
+procebar create_procebar(procebar_style style, int* current_num, int* target_num, void* arg) {
     // 申请内存
-    procebar* pb = (procebar*)malloc(sizeof(procebar));
-    memset(pb, 0, sizeof(procebar));
+    procebar pb;
+    memset(&pb, 0, sizeof(procebar));
 
     // 初始化进度条
-    pb->style = style;
-    pb->arg = arg;
-    pb->current_num = current_num;
-    pb->target_num = target_num;
-    pb->x = 0;
-    pb->y = 0;
+    pb.style = style;
+    pb.arg = arg;
+    pb.current_num = current_num;
+    pb.target_num = target_num;
+    pb.x = 0;
+    pb.y = 0;
 
     // 返回进度条指针
     return pb;
-}
-
-/**
- * @brief 释放进度条内存，并将pb指针置为NULL
- * 
- * @param pb 所需操作的进度条指针
- * @return int 指示进度条是否释放成功
- */
-int free_procebar(procebar** pb) {
-    // 进度条指针为空则返回0
-    if (pb == NULL || *pb == NULL) 
-        return 0;
-
-    free(*pb);
-    *pb = NULL;
-    // 释放进度条内存并返回1
-    return 1;
 }
 
 /**

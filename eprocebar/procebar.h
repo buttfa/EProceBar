@@ -56,14 +56,15 @@ typedef struct PROCEBAR {
 } procebar;
 
 /**
- * @brief 创建进度条
+ * @brief 创建进度条变量
  * 
  * @param style 指定进度条样式
  * @param current_num 当前进度
  * @param target_num 目标进度
- * @return procebar* 返回值为创建的进度条指针
+ * @param arg 进度条所需参数
+ * @return procebar 创建的进度条变量
  */
-procebar* create_procebar(procebar_style style, int* current_num, int* target_num, void* arg);
+procebar create_procebar(procebar_style style, int* current_num, int* target_num, void* arg);
 
 /**
  * @brief 更新进度条显示
@@ -72,14 +73,6 @@ procebar* create_procebar(procebar_style style, int* current_num, int* target_nu
  * @return int 指示进度条是否更新成功
  */
 int update_procebar(procebar* pb);
-
-/**
- * @brief 释放进度条内存，并将pb指针置为NULL
- * 
- * @param pb 所需操作的进度条指针
- * @return int 指示进度条是否释放成功
- */
-int free_procebar(procebar** pb);
 
 /**
  * @brief 清除进度条显示

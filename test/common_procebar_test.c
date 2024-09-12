@@ -13,16 +13,13 @@ int main() {
     };
     // 使用COMMON_PROCEBAR样式创建进度条。
     // 注：如果使用通用进度条的默认样式，则无需传入arg，对应位置传入NULL即可。
-    procebar* pb = create_procebar(COMMON_PROCEBAR, &current, &target, (void*)&arg);
+    procebar pb = create_procebar(COMMON_PROCEBAR, &current, &target, (void*)&arg);
     
     // 模拟因任务进行造成的进度变化。
     while (current < target) {
         current++;
-        update_procebar(pb);
+        update_procebar(&pb);
     }
     
-
-    // 释放进度条资源
-    free_procebar((procebar**)&pb);
     return 0;
 }
