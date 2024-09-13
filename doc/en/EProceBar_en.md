@@ -35,7 +35,6 @@ int main() {
 ## Function analysis
 |Function Declaration | Function Function Function | Attention|
 |:-|:-|:-|
-|Procebar * creat_procebar (Procebar_Style style, int * Current_num, int * target_num, boolean is_terminal); | Create and return a progress bar object pointer| 1. Procebar_style can use [EPRoceBar preset style](EProceBar_Style_en.md#eprocebar-preset-style) or [Custom style](EProceBar_Style_en.md#eprocebar-custom-style). <br>When the is_terminal parameter is true, it indicates that the progress bar is displayed in the terminal, and when it is false, it indicates that the progress bar is displayed in a non terminal|
+|procebar create_procebar (procebar_style style, int * current_num, int * target_num, void* arg); | Create and return a progress bar object| 1. Procebar_style can use [EPRoceBar preset style](EProceBar_Style_en.md#eprocebar-preset-style) or [Custom style](EProceBar_Style_en.md#eprocebar-custom-style).|
 |int update_procebar(procebar* pb);| Update the display of the PB progress bar||
-|int free_procebar(procebar** pb);| Release the memory of the PB progress bar| The free_decebar function not only releases the memory pointed to by the PB pointer, but also sets PB to NULL to prevent the occurrence of wild pointers<br> 2. Common usage: free_decebar ((prosebar * *)&pb)|
 |int clear_procebar(procebar* pb);| Clear the display of the PB progress bar| 1. Only applicable to the progress bar displayed on the terminal|
