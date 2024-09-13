@@ -21,6 +21,15 @@
 
 
 /**
+ * @brief EProceBar库内置样式
+ * 
+ */
+#include "color_procebar.h"
+#include "common_procebar.h"
+#include "task_procebar.h"
+#include "transmit_procebar.h"
+
+/**
  * @brief procebar_style结构体，用于定义进度条的样式
  * 
  */
