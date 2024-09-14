@@ -35,7 +35,7 @@ int main() {
 ```
 
 ## Function analysis
-|Function Declaration|Function Function Function|Note|
+|Function Declaration|Function role|Note|
 |:-|:-|:-|
 |procebar create_procebar(procebar_style style, int* current_num, int* target_num, void* arg) | Create and return a progress bar object| 1. Procebar_style can use [EPRoceBar preset style](EProceBar_Style_en.md#eprocebar-preset-style) or [Custom style](EProceBar_Style_en.md#eprocebar-custom-style).|
 |int update_procebar(procebar* pb)| Update the display of the progress bar||
