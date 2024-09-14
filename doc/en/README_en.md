@@ -12,6 +12,6 @@
 #### Lightweight, no dependencies (referring to dependencies other than standard libraries) progress bar library, suitable for C/C++.
 
 ## Usage method
-#### （1） The source and header files of the EPRoceBar library are located in the [eprocebar directory](../../eprocebar/).Please add them to the project.
-#### （2） Add header file # include "prosebar. h" to the engineering file
-#### （3） Simply call the relevant functions, please refer to the [EPRoceBar Library Instructions](EProceBar_en.md) for details
+#### （1） The source and header files of the EProceBar library are located in the [eprocebar directory](../../eprocebar/).Please add them to the project.
+#### （2） Add header file ```#include "procebar.h"``` to the engineering file
+#### （3） Call the relevant functions, please refer to the [EPRoceBar Library Instructions](EProceBar_en.md) for details
